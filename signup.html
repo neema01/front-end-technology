@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <link rel="stylesheet" href="signup.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <form >
+      <i class="fas fa-paper-plane"></i>
+
+      <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Enter your name" id ="contact-name" onkeyup="validateName()">
+        <span id="name-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Phone No.</label>
+        <input type="tel" placeholder="123 456 7890" id="c-number" onkeyup="validateNumber()">
+        <span id="number-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" placeholder="mail id" id="email" onkeyup="validateEmail()">
+        <span id="email-error"></span>
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" placeholder="create password" id="pswd" onkeyup="validatePassword()" >
+        <span id="pswd-error"></span>
+      </div>
+
+       
+    <input type="submit" name="signup" id="signup" onclick="return validateForm()" >
+    <!--button id="btnsubmit" type="submit" onclick="return validateForm()">Submit</button--->
+    <span id="submit-error"></span>
+   
+  </form>
+   
+ 
+  <!--------------script-->
+<script>
+  var nameError = document.getElementById('name-error');
+  var numberError = document.getElementById('number-error');
+  var emailError = document.getElementById('email-error');
+  var passwordError = document.getElementById('pswd-error');
+  var submitError = document.getElementById('submit-error');
+
+        function validateName(){
+          var name=document.getElementById('contact-name');
+          var nameError = document.getElementById('name-error');
+          if(name.value.length == 0){
+      
+            nameError.innerHTML = "*";
+            return false;
+          }
+          
+         //else if(!name.value.match(/^[A-Za-Z]*\S{1}[a-zA-Z]*$/)){
+          else if(name.value.length<5){
+            nameError.innerHTML = "name should not be less than 5 characters.";
+            return false;
+
+          }
+          else {
+            nameError.innerHTML= '<i class="fa-solid fa-check"></i>';
+            return true;
+          } 
+        }
+          function validateNumber(){
+            
+            var number = document.getElementById('c-number');
+            var numberError = document.getElementById('number-error');
+            
+            if(number.value.length == 0){
+              numberError.innerHTML = "*";
+              return false;
+
+            }else if(number.value.length !==10){
+              numberError.innerHTML = "number should have 10 digits.";
+              return false;
+            }
+
+            else if(!number.value.match(/^[0-9]{10}$/)){
+              numberError.innerHTML = "number should be digits.";
+              return false;
+            }
+            
+            else{
+              numberError.innerHTML ='<i class="fa-solid fa-check"></i>';
+              return true;
+            }
+          }
+
+           function validateEmail(){
+           var email = document.getElementById('email');
+           var emailError = document.getElementById('email-error');
+
+                    if(email.value.length == 0){
+                    emailError.innerHTML = "email id required";
+                    return false;
+                     } 
+                     else if(!email.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)){
+                     emailError.innerHTML="enter a valid email id";
+                     return false;
+                      }     else{
+                            emailError.innerHTML='<i class="fa-solid fa-check"></i>';
+                            return true;
+
+            }
+          }
+            
+          function validatePassword(){
+                var password=document.getElementById('pswd')
+                var passwordError=document.getElementById('pswd-error')
+                if(password.value.length== 0){
+                      passwordError.innerHTML ='Password cannot be blank'
+                      return false;
+                      }else if(password.value.length ==0 || password.value.length <4){
+                      passwordError.innerHTML ='Password length should greater than 4 characters.';
+                      return false;
+                      alert("please enter a valid password");
+                          }
+                      else {
+                            passwordError.innerHTML='<i class="fa-solid fa-check"></i>'
+                             return true;
+                               }
+                              }
+            function validateForm(){
+              var form=document.getElementById('signup')
+              var submitError=document.getElementById('submit-error')
+              if(!validateName()|| !validateNumber()||!validateEmail||!validatePassword()){
+                alert("please fix error");
+                //submitError.innerHTML="please fix error to submit";
+                return false;
+              }
+              else{
+                alert("successfully completed");
+                return true;
+              }
+          } 
+          
+          
+</script>
+
+</body>
+</html>

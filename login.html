@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login validation</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+  <form class="form-container" onsubmit="return validate()">
+    <p id="error"></p>
+    <h3>Please Login..!!</h3>
+    <div class="form-grp">
+        <label for="username">USER NAME</label>
+        <br>
+        <input type="text" name="username" placeholder="username" id="user">
+        <i class="fa fa-times u_times" id="ut"></i>
+        <i class="fa fa-check u_check" id="ck"></i>
+        </div>
+
+    <div class="form-grp">
+            <label for="password">PASSWORD</label>
+            <br>
+            <input type="text" name="password" placeholder="password" id="pass">
+            
+            <i class="fa fa-times p_times" id="pt"></i>
+            <i class="fa fa-check p_check" id="pk"></i>
+            </div>
+
+    <div class="form-grp">
+                
+                <input type="submit" name="login-btn" value="login">
+                </div>
+        </form>
+
+    
+  <script>
+        var user = document.getElementById('user');
+        user.addEventListener('keyup',()=>{
+            var u_times =document.getElementById('ut');
+            var u_check =document.getElementById('ck');
+            if(user.value.length == 0 ||user.value.length <5){
+                user.style.border = '2px solid green';
+                u_times.style.display = 'block';
+                u_check.style.display = 'none';
+                return false;
+            } else {
+                user.style.border ='2px solid green';
+                u_times.style.display = 'none';
+                u_check.style.display = 'block';
+            }
+        })
+
+
+        var password = document.getElementById('pass');
+        user.addEventListener('keyup',()=>{
+            var p_times =document.getElementById('pt');
+            var p_check =document.getElementById('pk');
+            if(password.value.length == 0 ||password.value.length <5){
+                user.style.border = '2px solid green';
+                p_times.style.display = 'block';
+                p_check.style.display = 'none';
+                return false;
+            } else {
+                password.style.border ='2px solid green';
+                p_times.style.display = 'none';
+                p_check.style.display = 'block';
+            }
+        })
+
+        function validate(){
+            if(user.value == 0||user.value.length<5){
+                document.getElementById('error').innerHTML="user name must be greater than 5 characters.";
+                return false;
+            }else if (pass.value == 0 || pass.value.length <4){
+                document.getElementById('error').innerHTML="password length should be more than 4 characters. ";
+                return false;
+            } else {
+                alert("login successfully");
+            }
+
+            }
+
+            
+        
+  </script>  
+</body>
+</html>
